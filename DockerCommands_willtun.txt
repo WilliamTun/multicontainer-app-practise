@@ -1,0 +1,8 @@
+// build image
+docker build -f Dockerfile.dev .
+
+// run container
+docker run 6f84550fed46
+
+// start docker-compose
+docker-compose up
