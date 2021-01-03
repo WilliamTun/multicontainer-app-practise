@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t WilliamTun/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t willtun/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true WilliamTun/react-test npm test
+  - docker run -e CI=true willtun/react-test npm test
 
 after_success:
-  - docker build -t WilliamTun/multi-client ./client
-  - docker build -t WilliamTun/multi-nginx ./nginx 
-  - docker build -t WilliamTun/multi-server ./server
-  - docker build -t WilliamTun/multi-worker ./worker
+  - docker build -t willtun/multi-client ./client
+  - docker build -t willtun/multi-nginx ./nginx 
+  - docker build -t willtun/multi-server ./server
+  - docker build -t willtun/multi-worker ./worker
   # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take above images and push them to docker hub
-  - docker push WilliamTun/mult-client
-  - docker push WilliamTun/multi-nginx 
-  - docker push WilliamTun/multi-server
-  - docker push WilliamTun/multi-worker
+  - docker push willtun/mult-client
+  - docker push willtun/multi-nginx 
+  - docker push willtun/multi-server
+  - docker push willtun/multi-worker
